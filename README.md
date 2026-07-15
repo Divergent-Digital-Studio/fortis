@@ -9,6 +9,8 @@ and lets you act on them — all locally, with optional AI analysis.
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![tests](https://img.shields.io/badge/tests-vitest%20%2B%20electron--vite-success)
 
+**[⬇ Download the latest release](https://github.com/Divergent-Digital-Studio/fortis/releases/latest)** · Build from source below · [Star & fork](https://github.com/Divergent-Digital-Studio/fortis) to make it your own.
+
 ---
 
 ## What it does
@@ -74,18 +76,22 @@ website/        Static download site (built to dist-site/)
 Defense actions are **manual-confirm only**. The rule engine creates
 *suggestions* (status `pending`); nothing executes without an explicit confirm.
 
-## Releasing / distributing
+## Building your own release
 
-See [`docs/RELEASE.md`](./docs/RELEASE.md) for the complete owner checklist.
-The short version:
+Fortis ships as signed installers for macOS, Windows, and Linux. To cut your
+own build:
 
 1. Set GitHub Variables `FORTIS_REPO_OWNER` and `FORTIS_PUBLISHER_NAME`.
 2. Generate a license keypair with `node scripts/license-keygen.mjs init` and
    replace the public key in `src/main/services/license/public-key.ts`.
-3. Provide code-signing secrets (Apple Developer ID + Windows cert) as GitHub
-   Secrets.
-4. Push a `v*` tag — the `release.yml` workflow builds signed installers for
-   mac/Windows/Linux and publishes a GitHub Release.
+3. (For distribution to others) provide code-signing secrets — Apple Developer
+   ID and a Windows certificate — as GitHub Secrets.
+4. Push a `v*` tag — the `release.yml` workflow builds installers for
+   macOS/Windows/Linux and publishes a GitHub Release. Unsigned builds work too
+   for local testing; leave the signing secrets empty.
+
+Prefer a one-liner? `npm run dist:mac`, `npm run dist:win`, or
+`npm run dist:linux` build installers on the matching OS.
 
 ## Licensing model
 
@@ -97,6 +103,28 @@ builds, generate your own keypair so your license grants are independent.
 Tier grants are honored for honest users. As with any client-side licensing,
 nothing stops a determined attacker from patching the binary — the realistic
 guarantee is "honest-user gating," not tamper-proof enforcement.
+
+## Make it your own
+
+Fortis is MIT-licensed and built to be forked. You're free to:
+
+- **Fork and rebrand** — change the product name, icons, and theme, generate
+  your own license keypair, and ship your own builds.
+- **Extend it** — the main-process services, rule engine, and AI payload
+  builder are modular; add detectors, integrations, or export formats.
+- **Run it fully local** — no account, no telemetry, no cloud dependency. AI is
+  bring-your-own-key or a local Ollama model.
+
+If you build something with Fortis, we'd love to see it — open a Discussion or
+share it in the community.
+
+## Community
+
+- **Discussions** — questions, ideas, and show-and-tell:
+  [GitHub Discussions](https://github.com/Divergent-Digital-Studio/fortis/discussions)
+- **Chat** — join the technical community on [Discord](#) *(invite link coming soon)*
+- **Issues** — bugs and feature requests:
+  [open an issue](https://github.com/Divergent-Digital-Studio/fortis/issues)
 
 ## Contributing
 
