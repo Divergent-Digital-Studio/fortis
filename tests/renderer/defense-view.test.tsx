@@ -124,7 +124,7 @@ describe('DefenseView', () => {
         await waitFor(() => {
             expect(screen.getByText('example.com:443')).toBeInTheDocument();
         });
-        expect(screen.getByText('expiring')).toBeInTheDocument();
+        expect(screen.getByText('Expiring')).toBeInTheDocument();
         expect(screen.getByText('7 days to expiry')).toBeInTheDocument();
     });
 });

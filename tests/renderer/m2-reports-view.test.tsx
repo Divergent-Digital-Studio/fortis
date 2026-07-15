@@ -81,11 +81,11 @@ describe('ReportsView', () => {
         expect(exportReport).toHaveBeenCalledWith('r1', 'pdf')
     })
 
-    it('calls generate when "Generate now" is clicked', () => {
+    it('calls generate when "Generate report" is clicked', () => {
         const generate = vi.fn()
         mockUseReports.mockReturnValue(result([report()], { generate }))
         render(<ReportsView />)
-        fireEvent.click(screen.getByText('Generate now'))
+        fireEvent.click(screen.getByText('Generate report'))
         expect(generate).toHaveBeenCalled()
     })
 
@@ -99,6 +99,6 @@ describe('ReportsView', () => {
         mockTier = 'free'
         mockUseReports.mockReturnValue(result([report({ id: 'a' }), report({ id: 'b' }), report({ id: 'c' })]))
         render(<ReportsView />)
-        expect(screen.getByText(/older report\(s\) locked/)).toBeInTheDocument()
+        expect(screen.getByText(/more reports?/)).toBeInTheDocument()
     })
 })

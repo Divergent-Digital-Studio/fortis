@@ -853,5 +853,20 @@
   "vpn.tunnel": "Tunnel",
   "vpn.verdict.fail": "Leak Detected",
   "vpn.verdict.pass": "Protected",
-  "vpn.verdict.warn": "No VPN"
+  "vpn.verdict.warn": "No VPN",
+  "common.view.table": "Table",
+  "common.view.visual": "Visual",
+  "common.viewMode": "View mode",
+  "license.title": "License",
+  "license.currentPlan": "Current plan",
+  "license.validUntil": "Valid until {date}",
+  "license.noExpiry": "No expiry",
+  "license.keyLabel": "License key",
+  "license.activate": "Activate",
+  "license.activating": "Activating…",
+  "license.activated": "License activated.",
+  "license.activateFailed": "Activation failed. Check your key and try again.",
+  "license.noLicense": "No license yet?",
+  "license.buy": "Buy a license",
+  "license.closeAria": "Close license dialog"
 }
