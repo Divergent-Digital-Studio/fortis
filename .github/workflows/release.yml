@@ -41,6 +41,9 @@ jobs:
             echo "::warning::FORTIS_PUBLISHER_NAME is not set; Windows publisher identity will be empty (unsigned updater fallback)."
           fi
 
+      - name: Build datasets
+        run: npm run build:datasets
+
       - name: Build app
         run: npm run build
 

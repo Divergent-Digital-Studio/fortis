@@ -6,6 +6,9 @@ out/
 dist/
 dist-site/
 
+# Generated datasets (build artifacts from public sources; `npm run build:datasets`)
+resources/datasets/
+
 # Logs
 *.log
 
