@@ -52,12 +52,18 @@ jobs:
       - name: Package and publish
         shell: bash
         run: |
+          # electron-builder treats an empty-string CSC_LINK as a cert file path
+          # ("not a file"), so unset any credential var that arrived empty.
+          for v in CSC_LINK CSC_KEY_PASSWORD WIN_CSC_LINK WIN_CSC_KEY_PASSWORD \
+                   APPLE_ID APPLE_APP_SPECIFIC_PASSWORD APPLE_TEAM_ID; do
+            [ -z "${!v}" ] && unset "$v"
+          done
           EXTRA=()
-          if [ -z "${APPLE_ID}" ]; then
+          if [ -z "${APPLE_ID:-}" ]; then
             echo "::warning::No Apple credentials — building macOS unsigned, notarization disabled."
             EXTRA+=(-c.mac.notarize=false)
           fi
-          if [ -z "${CSC_LINK}" ] && [ -z "${WIN_CSC_LINK}" ]; then
+          if [ -z "${CSC_LINK:-}" ] && [ -z "${WIN_CSC_LINK:-}" ]; then
             echo "::warning::No signing certificates — building unsigned installers."
             export CSC_IDENTITY_AUTO_DISCOVERY=false
           fi
