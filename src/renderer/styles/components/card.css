@@ -1,0 +1,57 @@
+.card {
+    background: var(--glass);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-lg);
+    /* Both prefixed and unprefixed are required: on some Electron GPU/driver
+       combos an unprefixed-only backdrop-filter samples an empty (white) buffer
+       instead of the real backdrop, painting a white wash over the card. */
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    transition:
+        background var(--duration-fast) var(--ease-out),
+        border-color var(--duration-fast) var(--ease-out);
+    animation: fadeIn var(--duration-normal) var(--ease-out);
+}
+
+.card--hoverable:hover {
+    background: var(--glass-hover);
+    border-color: var(--edge-emphasis);
+}
+
+.card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--edge-subtle);
+}
+
+.card__header-title {
+    font-size: var(--type-heading);
+    font-weight: var(--weight-semibold);
+    color: var(--ink-primary);
+    line-height: var(--leading-tight);
+}
+
+.card__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.card__body {
+    padding: var(--space-5);
+}
+
+.card--compact .card__body {
+    padding: var(--space-4);
+}
+
+.card--compact .card__header {
+    padding: var(--space-3) var(--space-4);
+}
+
+.card--flush .card__body {
+    padding: 0;
+}

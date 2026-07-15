@@ -1,0 +1,228 @@
+.geo-map-view__banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--status-danger);
+    border-radius: var(--radius-md);
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+    font-size: var(--type-label);
+}
+
+.geo-map-view__banner-message {
+    flex: 1;
+    min-width: 0;
+    color: var(--ink-secondary);
+}
+
+.geo-map-view__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-height: 300px;
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--ink-secondary);
+}
+
+.geo-map-view__error svg {
+    color: var(--status-danger);
+}
+
+/*
+ * The canvas fills the stage like every other visual page; the SVG's own
+ * preserveAspectRatio centres the 3:1 projection inside it without stretching.
+ */
+.geo-map-view__canvas {
+    padding: 0;
+    cursor: grab;
+    touch-action: none;
+    background: var(--void);
+    display: flex;
+    align-items: center;
+}
+
+.geo-map-view__canvas--panning {
+    cursor: grabbing;
+}
+
+.geo-map-view__svg {
+    display: block;
+    width: 100%;
+    max-height: 100%;
+    aspect-ratio: 3 / 1;
+}
+
+/* Ocean sits below land so the coastline reads without a hardcoded colour. */
+.geo-map-view__ocean {
+    fill: var(--void);
+}
+
+.geo-map-view__land {
+    fill: var(--glass-active);
+    stroke: var(--edge-emphasis);
+    stroke-linejoin: round;
+}
+
+/* Internal country borders; the coastline is already drawn by the land stroke. */
+.geo-map-view__border {
+    fill: none;
+    stroke: var(--edge-emphasis);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.geo-map-view__graticule {
+    stroke: var(--edge-subtle);
+}
+
+.geo-map-view__point {
+    fill: var(--signal);
+    fill-opacity: 0.85;
+    stroke: var(--signal-hover);
+    cursor: pointer;
+}
+
+.geo-map-view__point--hovered {
+    fill: var(--signal-hover);
+    fill-opacity: 1;
+}
+
+.geo-map-view__point:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 2px;
+}
+
+/* ─── Zoom controls ─── */
+.geo-map-view__controls {
+    position: absolute;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.geo-map-view__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    color: var(--ink-secondary);
+    background: var(--chamber);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.geo-map-view__control:hover {
+    color: var(--ink-primary);
+    background: var(--glass-hover);
+}
+
+.geo-map-view__control:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 1px;
+}
+
+/* ─── Country panel ─── */
+.geo-map-view__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.geo-map-view__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--glass);
+}
+
+.geo-map-view__list-name {
+    font-size: var(--type-caption);
+    color: var(--ink-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.geo-map-view__panel-title {
+    margin: 0;
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+    color: var(--ink-tertiary);
+}
+
+.geo-map-view__panel-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    color: var(--ink-primary);
+}
+
+.geo-map-view__panel-head h3 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: var(--type-body);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-mono);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.geo-map-view__panel-close {
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    color: var(--ink-tertiary);
+    cursor: pointer;
+    padding: 0.125rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.geo-map-view__panel-close:hover {
+    color: var(--ink-primary);
+    background: var(--glass);
+}
+
+.geo-map-view__facts {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-4);
+    margin: 0;
+    font-size: var(--type-caption);
+}
+
+.geo-map-view__facts dt {
+    color: var(--ink-tertiary);
+}
+
+.geo-map-view__facts dd {
+    margin: 0;
+    color: var(--ink-primary);
+    overflow-wrap: anywhere;
+}
+
+.geo-map-view__mono {
+    font-family: var(--font-mono);
+}

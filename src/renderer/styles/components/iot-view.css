@@ -1,0 +1,169 @@
+.iot-view__cell-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink-primary);
+    min-width: 0;
+}
+
+.iot-view__cell-name svg {
+    flex-shrink: 0;
+}
+
+.iot-view__truncate {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Card renders its children inside a `display:block` .card__body, so the
+   sections are spaced here rather than with a gap on the card itself. */
+.iot-view__card .card__body > * + * {
+    margin-top: var(--space-4);
+}
+
+.iot-view__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.iot-view__vendor {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--weight-semibold);
+    color: var(--ink-primary);
+}
+
+.iot-view__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+/* Label above value: a side-by-side grid cannot hold a translated label
+   ("Visto por última vez") and an IP in a 318px panel without one clipping. */
+.iot-view__facts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: 0;
+}
+
+.iot-view__facts dt {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.iot-view__facts dt + dd {
+    margin: 0 0 var(--space-2);
+    color: var(--ink-primary);
+    overflow-wrap: break-word;
+}
+
+.iot-view__facts dd:last-child {
+    margin-bottom: 0;
+}
+
+.iot-view__facts dd.iot-view__mono {
+    font-family: var(--font-mono);
+}
+
+.iot-view__scope-note {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+}
+
+.iot-view__label {
+    font-size: var(--type-caption);
+    color: var(--ink-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.iot-view__mono {
+    font-family: var(--font-mono);
+    color: var(--ink-primary);
+}
+
+.iot-view__destinations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.iot-view__muted {
+    color: var(--ink-secondary);
+}
+
+.iot-view__anomaly {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--status-warning);
+    border-radius: var(--radius-md);
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
+    font-size: var(--type-label);
+}
+
+.iot-view__banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--status-danger);
+    border-radius: var(--radius-md);
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+    font-size: var(--type-label);
+}
+
+.iot-view__banner-message {
+    flex: 1;
+    min-width: 0;
+    color: var(--ink-secondary);
+}
+
+.iot-view__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-height: 300px;
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--ink-secondary);
+}
+
+.iot-view__error svg {
+    color: var(--status-danger);
+}
+
+.iot-view__panel-close {
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    color: var(--ink-tertiary);
+    cursor: pointer;
+    padding: 0.125rem;
+    border-radius: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.iot-view__panel-close:hover {
+    color: var(--ink-primary);
+    background: var(--glass);
+}

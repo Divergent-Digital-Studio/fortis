@@ -1,0 +1,81 @@
+.hub-orbit__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+}
+
+.hub-orbit__svg:active {
+    cursor: grabbing;
+}
+
+.hub-orbit__ring {
+    fill: none;
+    stroke: var(--edge-focus);
+    stroke-width: 1;
+    opacity: 0.18;
+}
+
+.hub-orbit__spoke {
+    stroke: var(--edge-focus);
+    opacity: 0.28;
+    transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.hub-orbit__spoke--dim {
+    opacity: 0.05;
+}
+
+.hub-orbit__hub circle {
+    fill: var(--ink-primary);
+}
+
+.hub-orbit__hub text {
+    fill: var(--ink-tertiary);
+    font-size: 12px;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.hub-orbit__node {
+    cursor: pointer;
+    transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.hub-orbit__node:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 2px;
+}
+
+.hub-orbit__node--inner circle {
+    fill: var(--status-info);
+}
+
+.hub-orbit__node--outer circle {
+    fill: var(--signal);
+}
+
+.hub-orbit__node--warning circle {
+    fill: var(--status-warning);
+}
+
+.hub-orbit__node--dim {
+    opacity: 0.25;
+}
+
+.hub-orbit__node--selected circle {
+    stroke: var(--ink-primary);
+    stroke-width: 2;
+}
+
+.hub-orbit__node text {
+    fill: var(--ink-tertiary);
+    font-size: 11px;
+    pointer-events: none;
+}
+
+.hub-orbit__node--selected text {
+    fill: var(--ink-primary);
+}

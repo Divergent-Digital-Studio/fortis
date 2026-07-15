@@ -1,0 +1,98 @@
+.top-processes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    justify-content: flex-start;
+    /* Cap the list height so the section scrolls internally when it holds
+       more processes than fit. */
+    min-height: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.top-processes__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: background var(--duration-fast) var(--ease-out);
+}
+
+.top-processes__item:hover {
+    background: var(--glass-hover);
+}
+
+.top-processes__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.top-processes__left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    flex: 1;
+}
+
+.top-processes__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-xs);
+    flex-shrink: 0;
+}
+
+.top-processes__name {
+    font-size: var(--type-body);
+    font-weight: var(--weight-medium);
+    color: var(--ink-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: var(--leading-tight);
+}
+
+.top-processes__stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+}
+
+.top-processes__count {
+    font-size: var(--type-body);
+    font-weight: var(--weight-bold);
+    color: var(--ink-primary);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.top-processes__pct {
+    font-size: var(--type-caption);
+    font-weight: var(--weight-medium);
+    color: var(--ink-tertiary);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    min-width: 32px;
+    text-align: right;
+}
+
+.top-processes__bar-track {
+    height: 6px;
+    background: var(--glass);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.top-processes__bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width var(--duration-normal) var(--ease-out);
+    min-width: 4px;
+}

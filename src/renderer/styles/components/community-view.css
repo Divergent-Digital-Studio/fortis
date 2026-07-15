@@ -1,0 +1,199 @@
+.community-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+.community-view__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.community-view__lock {
+    position: relative;
+}
+
+.community-view__lock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--void) 55%, transparent);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    color: var(--ink-secondary);
+    z-index: 2;
+}
+
+.community-view__subtitle {
+    margin: 0 0 12px;
+    color: var(--ink-secondary);
+}
+
+.community-view__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.community-view__optin {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.community-view__optin-label {
+    font-weight: var(--weight-semibold);
+}
+
+.community-view__badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.community-view__notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 16px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--status-warning);
+    border-radius: var(--radius-md);
+    background: var(--status-warning-bg);
+    color: var(--ink-primary);
+    font-size: var(--type-label);
+    line-height: var(--leading-normal);
+}
+
+.community-view__result {
+    margin: 0 0 16px;
+    font-size: var(--type-label);
+    line-height: var(--leading-normal);
+}
+
+.community-view__result--ok {
+    color: var(--status-safe);
+}
+
+.community-view__result--error {
+    color: var(--status-danger);
+}
+
+.community-view__hint {
+    margin: 0 0 16px;
+    font-size: var(--type-label);
+    color: var(--ink-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+.community-view__field {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.community-view__field .settings-field__label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.community-view__field .settings-field__hint {
+    display: block;
+    margin-top: 4px;
+}
+
+/* The shared .settings-input caps at 280px for the right-aligned settings rows;
+   these fields are full-bleed inside the card. */
+.community-view__input {
+    max-width: none;
+}
+
+.community-view__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.community-view__summary {
+    display: flex;
+    gap: 24px;
+}
+
+.community-view__summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.community-view__summary-label {
+    font-size: var(--type-caption);
+    color: var(--ink-secondary);
+}
+
+.community-view__summary-value {
+    font-size: var(--type-heading);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-mono);
+}
+
+.community-preview {
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    background: var(--chamber);
+}
+
+.community-preview__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.community-preview__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--weight-semibold);
+}
+
+.community-preview__hint {
+    margin: 0 0 12px;
+    font-size: var(--type-label);
+    color: var(--ink-secondary);
+}
+
+.community-preview__empty {
+    margin: 0;
+    font-size: var(--type-label);
+    color: var(--ink-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+.community-preview__json {
+    margin: 0;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: var(--void);
+    color: var(--ink-primary);
+    font-family: var(--font-mono);
+    font-size: var(--type-caption);
+    overflow: auto;
+    max-height: 280px;
+}
+
+.community-preview__json:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 1px;
+}
+
+[dir='rtl'] .community-view__row,
+[dir='rtl'] .community-preview__head {
+    flex-direction: row-reverse;
+}

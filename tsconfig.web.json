@@ -1,0 +1,41 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "outDir": "./out/types/web",
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "jsx": "react-jsx",
+        "noEmit": false,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "paths": {
+            "@renderer/*": [
+                "src/renderer/*"
+            ],
+            "@shared/*": [
+                "src/shared/*"
+            ]
+        }
+    },
+    "include": [
+        "src/renderer/**/*.ts",
+        "src/renderer/**/*.tsx",
+        "src/renderer/**/*.json",
+        "src/shared/**/*.ts"
+    ],
+    "exclude": [
+        "src/main/**/*",
+        "src/preload/**/*",
+        "node_modules",
+        "out",
+        "dist"
+    ]
+}

@@ -1,0 +1,94 @@
+.orbit-tooltip {
+    position: fixed;
+    z-index: 900;
+    pointer-events: none;
+    width: 17rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--chamber);
+    border: 1px solid var(--edge);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.28);
+    font-size: var(--type-caption);
+}
+
+.orbit-tooltip__head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.orbit-tooltip__name {
+    color: var(--ink-primary);
+    font-weight: var(--weight-semibold);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orbit-tooltip__facts {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.25rem var(--space-3);
+    margin: 0;
+}
+
+.orbit-tooltip__facts dt {
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+}
+
+.orbit-tooltip__facts dd {
+    margin: 0;
+    color: var(--ink-primary);
+    overflow-wrap: anywhere;
+}
+
+/* A secondary block under the facts: related rows, members, sockets. */
+.orbit-tooltip__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid var(--edge-subtle);
+    padding-top: var(--space-2);
+}
+
+.orbit-tooltip__section-head {
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+    font-weight: var(--weight-semibold);
+}
+
+.orbit-tooltip__row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+}
+
+.orbit-tooltip__row-name {
+    color: var(--ink-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 7rem;
+}
+
+.orbit-tooltip__row-meta {
+    color: var(--ink-tertiary);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.orbit-tooltip__more {
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+}
+
+.orbit-tooltip__mono {
+    font-family: var(--font-mono);
+    color: var(--ink-secondary);
+}

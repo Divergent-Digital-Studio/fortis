@@ -1,0 +1,414 @@
+/* ═══════════════════════════════════════════════════════
+   CONNECTION TABLE — Data grid for network connections
+   ═══════════════════════════════════════════════════════ */
+
+.connection-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-md);
+    background: var(--chamber);
+}
+
+/* ─── Sticky header ─── */
+.connection-table__header {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.5fr) minmax(140px, 2fr) 80px 70px 110px 60px;
+    gap: 0;
+    padding: 0 var(--space-4);
+    height: 36px;
+    align-items: center;
+    background: var(--void);
+    border-bottom: 1px solid var(--edge);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.connection-table__header-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-2);
+    font-size: var(--type-caption);
+    font-weight: var(--weight-semibold);
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+}
+
+.connection-table__header-cell:hover {
+    color: var(--ink-secondary);
+}
+
+.connection-table__header-cell--active {
+    color: var(--ink-primary);
+}
+
+.connection-table__sort-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.connection-table__sort-icon--desc {
+    transform: rotate(180deg);
+}
+
+/* ─── Scrollable body ─── */
+.connection-table__body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+}
+
+/* ─── Row ─── */
+.connection-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.5fr) minmax(140px, 2fr) 80px 70px 110px 60px;
+    gap: 0;
+    padding: 0 var(--space-4);
+    height: 40px;
+    align-items: center;
+    border-bottom: 1px solid var(--edge-subtle);
+    transition: background var(--duration-fast) var(--ease-out);
+    border-left: 3px solid var(--status-safe);
+}
+
+.connection-row:hover {
+    background: var(--glass-hover);
+}
+
+.connection-row--danger {
+    border-left-color: var(--status-danger);
+}
+
+.connection-row--warning {
+    border-left-color: var(--status-warning);
+}
+
+.connection-row--info {
+    border-left-color: var(--status-info);
+}
+
+/* ─── Flash animation for new connections ─── */
+@keyframes connection-flash {
+    0% {
+        background: rgba(34, 197, 94, 0.15);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+.connection-row--new {
+    animation: connection-flash 1.5s var(--ease-out) forwards;
+}
+
+/* ─── Cell ─── */
+.connection-row__cell {
+    padding: 0 var(--space-2);
+    font-size: var(--type-data);
+    color: var(--ink-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: var(--leading-data);
+    min-width: 0;
+}
+
+.connection-row__cell--process {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.connection-row__cell--process>span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.connection-row__process-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+    flex-shrink: 0;
+}
+
+.connection-row__cell--mono {
+    font-family: var(--font-mono);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-normal);
+}
+
+.connection-row__cell--state {
+    display: flex;
+    align-items: center;
+}
+
+.connection-row__state-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-xs);
+    font-size: var(--type-caption);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+.connection-row__state-badge--established {
+    color: var(--status-safe);
+    background: var(--status-safe-bg);
+}
+
+.connection-row__state-badge--listen {
+    color: var(--status-info);
+    background: var(--status-info-bg);
+}
+
+.connection-row__state-badge--time-wait,
+.connection-row__state-badge--close-wait,
+.connection-row__state-badge--closing,
+.connection-row__state-badge--last-ack,
+.connection-row__state-badge--fin-wait1,
+.connection-row__state-badge--fin-wait2 {
+    color: var(--status-warning);
+    background: var(--status-warning-bg);
+}
+
+.connection-row__state-badge--syn-sent,
+.connection-row__state-badge--syn-recv {
+    color: var(--ink-secondary);
+    background: var(--glass);
+}
+
+.connection-row__state-badge--closed {
+    color: var(--ink-tertiary);
+    background: var(--glass);
+}
+
+.connection-row__cell--threat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+.connection-row__cell--threat:hover {
+    opacity: 0.85;
+}
+
+/* ─── Threat Tooltip ─── */
+.connection-row__threat-tooltip {
+    position: fixed;
+    z-index: 1000;
+    padding: var(--space-2) var(--space-3);
+    background: var(--void);
+    border: 1px solid var(--edge-emphasis);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    max-width: 280px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    animation: threat-tooltip-in 120ms var(--ease-out) forwards;
+}
+
+@keyframes threat-tooltip-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-100% + 4px));
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%);
+    }
+}
+
+.connection-row__threat-tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
+}
+
+.connection-row__threat-tooltip-level {
+    font-size: var(--type-caption);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+}
+
+.connection-row__threat-tooltip-confidence {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+    margin-left: auto;
+    font-family: var(--font-mono);
+}
+
+.connection-row__threat-tooltip-explanation {
+    font-size: var(--type-caption);
+    color: var(--ink-secondary);
+    line-height: var(--leading-relaxed);
+    white-space: normal;
+    word-break: break-word;
+}
+
+.connection-row__threat-tooltip-source {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+    margin-top: var(--space-1);
+    padding-top: var(--space-1);
+    border-top: 1px solid var(--edge-subtle);
+}
+
+/* ─── Right-Click Context Menu ─── */
+.connection-row__context-menu {
+    position: fixed;
+    z-index: 1001;
+    min-width: 160px;
+    background: var(--chamber);
+    border: 1px solid var(--edge-emphasis);
+    border-radius: var(--radius-sm);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    padding: var(--space-1) 0;
+    animation: context-menu-in 100ms var(--ease-out) forwards;
+}
+
+@keyframes context-menu-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.connection-row__context-menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    background: none;
+    border: none;
+    color: var(--ink-primary);
+    font-family: var(--font-sans);
+    font-size: var(--type-data);
+    cursor: pointer;
+    transition:
+        background var(--duration-fast) var(--ease-out),
+        color var(--duration-fast) var(--ease-out);
+    text-align: left;
+}
+
+.connection-row__context-menu-item:hover {
+    background: var(--glass-hover);
+    color: var(--status-safe);
+}
+
+.connection-row__context-menu-item:active {
+    background: var(--glass-active);
+}
+
+/* ─── Connection Tooltip ─── */
+.connection-row__tooltip {
+    position: fixed;
+    z-index: 999;
+    padding: var(--space-2) var(--space-3);
+    background: var(--void);
+    border: 1px solid var(--edge-emphasis);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    white-space: nowrap;
+    max-width: 360px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.connection-row__tooltip-path {
+    font-family: var(--font-mono);
+    font-size: var(--type-caption);
+    color: var(--ink-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.connection-row__tooltip-duration {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+    margin-top: 2px;
+}
+
+/* ─── Filter bar ─── */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--chamber);
+    border-bottom: 1px solid var(--edge);
+    flex-wrap: wrap;
+}
+
+.filter-bar__select {
+    min-width: 110px;
+}
+
+.filter-bar__select .ds-select__trigger {
+    min-height: 32px;
+    font-size: var(--type-data);
+}
+
+.filter-bar__search {
+    flex: 1;
+    min-width: 180px;
+    max-width: 320px;
+}
+
+.filter-bar__count {
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ─── Empty/loading states inside table ─── */
+.connection-table__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-4);
+}
+
+.connection-table__loading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+}
+.connection-row--clickable {
+    cursor: pointer;
+}
+
+.connection-row--active {
+    background: var(--glass-active);
+}

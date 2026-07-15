@@ -1,0 +1,91 @@
+.error-boundary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--space-6);
+    background-color: var(--void);
+}
+
+.error-boundary__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+    max-width: 420px;
+    width: 100%;
+    padding: var(--space-8) var(--space-6);
+    background: var(--glass);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-lg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    animation: fadeIn var(--duration-normal) var(--ease-out);
+    text-align: center;
+}
+
+.error-boundary__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+}
+
+.error-boundary__title {
+    font-size: var(--type-title);
+    font-weight: var(--weight-semibold);
+    color: var(--ink-primary);
+    line-height: var(--leading-tight);
+}
+
+.error-boundary__message {
+    font-size: var(--type-body);
+    font-family: var(--font-mono);
+    color: var(--ink-tertiary);
+    line-height: var(--leading-relaxed);
+    padding: var(--space-3) var(--space-4);
+    background: var(--glass);
+    border: 1px solid var(--edge-subtle);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+    word-break: break-word;
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.error-boundary__reload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 40px;
+    padding: 0 var(--space-5);
+    background: var(--signal);
+    color: #ffffff;
+    font-size: var(--type-body);
+    font-weight: var(--weight-medium);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out);
+}
+
+.error-boundary__reload:hover {
+    background: var(--signal-hover);
+}
+
+.error-boundary__reload:active {
+    transform: scale(0.97);
+}
+
+.error-boundary__reload:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 2px;
+}

@@ -1,0 +1,170 @@
+:root {
+  /* ═══════════════════════════════════════════════════════
+     SURFACES — Background hierarchy (dark theme only v1.0)
+     ═══════════════════════════════════════════════════════ */
+  --void: #0a0a0f;
+  --chamber: #12121a;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-hover: rgba(255, 255, 255, 0.06);
+  --glass-active: rgba(255, 255, 255, 0.08);
+
+  /* ═══════════════════════════════════════════════════════
+     TEXT — Ink color hierarchy
+     ═══════════════════════════════════════════════════════ */
+  --ink-primary: #e8e8ed;
+  --ink-secondary: #8b8b9e;
+  --ink-tertiary: #7d7d92;
+  --ink-muted: #9090a6;
+
+  /* ═══════════════════════════════════════════════════════
+     BORDERS — Edge system
+     ═══════════════════════════════════════════════════════ */
+  --edge: rgba(255, 255, 255, 0.06);
+  --edge-subtle: rgba(255, 255, 255, 0.04);
+  --edge-emphasis: rgba(255, 255, 255, 0.12);
+  --edge-focus: rgba(99, 102, 241, 0.5);
+
+  /* ═══════════════════════════════════════════════════════
+     BRAND — Signal / accent colors
+     ═══════════════════════════════════════════════════════ */
+  --signal: #6366f1;
+  --signal-hover: #818cf8;
+  --signal-muted: rgba(99, 102, 241, 0.15);
+  --signal-glow: rgba(99, 102, 241, 0.3);
+
+  /* ═══════════════════════════════════════════════════════
+     STATUS — Semantic status colors
+     ═══════════════════════════════════════════════════════ */
+  --status-safe: #22c55e;
+  --status-safe-bg: rgba(34, 197, 94, 0.15);
+
+  --status-info: #3b82f6;
+  --status-info-bg: rgba(59, 130, 246, 0.15);
+
+  --status-warning: #f59e0b;
+  --status-warning-bg: rgba(245, 158, 11, 0.15);
+
+  --status-danger: #ef4444;
+  --status-danger-bg: rgba(239, 68, 68, 0.15);
+
+  --status-critical: #dc2626;
+  --status-critical-bg: rgba(220, 38, 38, 0.15);
+
+  /* ═══════════════════════════════════════════════════════
+     GLASS — Glassmorphism effect tokens
+     ═══════════════════════════════════════════════════════ */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-blur: blur(20px);
+  --glass-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ═══════════════════════════════════════════════════════
+     TYPOGRAPHY — Size scale
+     ═══════════════════════════════════════════════════════ */
+  --type-display: 28px;
+  --type-title: 20px;
+  --type-heading: 16px;
+  --type-body: 14px;
+  --type-label: 12px;
+  --type-caption: 11px;
+  --type-data: 13px;
+
+  /* ═══════════════ Font weights ═══════════════ */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ═══════════════ Line heights ═══════════════ */
+  --leading-tight: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+  --leading-data: 1.3;
+
+  /* ═══════════════ Letter spacing ═══════════════ */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-caps: 0.06em;
+
+  /* ═══════════════════════════════════════════════════════
+     SPACING — 4px grid system
+     ═══════════════════════════════════════════════════════ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+
+  /* ═══════════════════════════════════════════════════════
+     BORDER RADIUS
+     ═══════════════════════════════════════════════════════ */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* ═══════════════════════════════════════════════════════
+     ANIMATION — Easing & durations
+     ═══════════════════════════════════════════════════════ */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+
+  /* ═══════════════════════════════════════════════════════
+     FONT FAMILIES
+     ═══════════════════════════════════════════════════════ */
+  --font-sans: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+[data-theme="light"] {
+  /* ═══════════════ SURFACES — light ═══════════════ */
+  --void: #f5f6fa;
+  --chamber: #ffffff;
+  --glass: rgba(15, 23, 42, 0.02);
+  --glass-hover: rgba(15, 23, 42, 0.04);
+  --glass-active: rgba(15, 23, 42, 0.06);
+
+  /* ═══════════════ TEXT — light ═══════════════ */
+  --ink-primary: #1a1a24;
+  --ink-secondary: #4b5563;
+  --ink-tertiary: #6b7280;
+  --ink-muted: #6b7280;
+
+  /* ═══════════════ BORDERS — light ═══════════════ */
+  --edge: rgba(15, 23, 42, 0.10);
+  --edge-subtle: rgba(15, 23, 42, 0.06);
+  --edge-emphasis: rgba(15, 23, 42, 0.16);
+  --edge-focus: rgba(99, 102, 241, 0.45);
+
+  /* ═══════════════ STATUS — light tints ═══════════════ */
+  --status-safe-bg: rgba(34, 197, 94, 0.12);
+  --status-info-bg: rgba(59, 130, 246, 0.12);
+  --status-warning-bg: rgba(245, 158, 11, 0.14);
+  --status-danger-bg: rgba(239, 68, 68, 0.12);
+  --status-critical-bg: rgba(220, 38, 38, 0.12);
+
+  /* ═══════════════ GLASS — light ═══════════════ */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-shadow:
+    0 4px 24px rgba(15, 23, 42, 0.08),
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}

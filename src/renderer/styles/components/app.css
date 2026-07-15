@@ -1,0 +1,15 @@
+.app-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 400px;
+    gap: var(--space-3);
+    color: var(--ink-secondary);
+    font-size: var(--type-heading);
+    font-weight: var(--weight-medium);
+}
+
+.app-placeholder__icon {
+    color: var(--signal);
+}

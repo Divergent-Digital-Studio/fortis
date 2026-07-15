@@ -1,0 +1,34 @@
+.app-shell {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--void);
+}
+
+.app-shell__main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-shell__content {
+    flex: 1;
+    overflow: auto;
+    padding: var(--space-6);
+    min-height: 0;
+}
+
+/* Views that fill the window (the flow orbit) need a definite height to grow
+   into; percentage min-height resolves against the content box above. */
+.app-shell__content-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}

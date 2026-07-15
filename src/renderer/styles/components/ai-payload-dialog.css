@@ -1,0 +1,115 @@
+.ai-payload-dialog__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-8);
+}
+
+.ai-payload-dialog__card {
+    position: relative;
+    background: var(--chamber);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-lg);
+    width: min(720px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.ai-payload-dialog__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: transparent;
+    border: none;
+    color: var(--ink-tertiary);
+    cursor: pointer;
+    padding: var(--space-1);
+}
+
+.ai-payload-dialog__close:hover {
+    color: var(--ink-primary);
+}
+
+.ai-payload-dialog__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink-primary);
+}
+
+.ai-payload-dialog__title {
+    margin: 0;
+    font-size: var(--type-heading);
+}
+
+.ai-payload-dialog__note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    color: var(--ink-secondary);
+    font-size: var(--type-data);
+    background: var(--glass);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+}
+
+.ai-payload-dialog__error {
+    color: var(--status-danger);
+    font-size: var(--type-body);
+    margin: 0;
+}
+
+.ai-payload-dialog__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.ai-payload-dialog__section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ai-payload-dialog__section-title {
+    font-weight: var(--weight-semibold);
+    color: var(--ink-primary);
+    font-size: var(--type-body);
+}
+
+.ai-payload-dialog__code {
+    margin: 0;
+    background: var(--void);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    font-family: var(--font-mono, monospace);
+    font-size: var(--type-label);
+    color: var(--ink-secondary);
+    max-height: 240px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Inline panel variant used on the Overview screen instead of the modal. */
+.ai-payload-panel {
+    background: var(--chamber);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: min(720px, 100%);
+    margin: 0 auto;
+}

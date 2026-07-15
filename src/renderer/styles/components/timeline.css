@@ -1,0 +1,43 @@
+.timeline-chart {
+    width: 100%;
+    height: 220px;
+}
+
+.timeline-chart__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    color: var(--ink-tertiary);
+    font-size: var(--type-body);
+}
+
+.timeline-tooltip {
+    background: var(--chamber) !important;
+    border: 1px solid var(--edge-emphasis) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-2) var(--space-3) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+.timeline-tooltip__time {
+    font-size: var(--type-label);
+    color: var(--ink-secondary);
+    margin-bottom: 2px;
+}
+
+.timeline-tooltip__value {
+    font-size: var(--type-body);
+    font-weight: var(--weight-semibold);
+    color: var(--ink-primary);
+}
+
+.timeline-tooltip__dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--signal);
+    margin-right: var(--space-2);
+    vertical-align: middle;
+}

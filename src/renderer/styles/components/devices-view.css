@@ -1,0 +1,278 @@
+.device-orbit__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+}
+
+.device-orbit__svg:active {
+    cursor: grabbing;
+}
+
+.device-orbit__ring {
+    fill: none;
+    stroke: var(--edge-focus);
+    stroke-width: 1;
+    opacity: 0.18;
+}
+
+.device-orbit__spoke {
+    stroke: var(--edge-focus);
+    opacity: 0.28;
+    transition: opacity 0.15s ease;
+}
+
+.device-orbit__spoke--dim {
+    opacity: 0.05;
+}
+
+.device-orbit__hub circle {
+    fill: var(--ink-primary);
+}
+
+.device-orbit__hub text {
+    fill: var(--ink-tertiary);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.device-orbit__node {
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.device-orbit__node:focus-visible {
+    outline: 2px solid var(--edge-focus);
+    outline-offset: 2px;
+}
+
+.device-orbit__node--lan circle {
+    fill: var(--status-info);
+}
+
+.device-orbit__node--iot circle {
+    fill: var(--status-warning);
+}
+
+/* Recency is carried by the pulse alone. Colour stays reserved for the one thing
+   a node *is* — a device or an IoT device — so it is never overpainted. */
+.device-orbit__node--new circle {
+    animation: device-orbit-pulse 1.8s ease-in-out infinite;
+}
+
+.device-orbit__node--dim {
+    opacity: 0.14;
+}
+
+.device-orbit__node--selected circle {
+    stroke: var(--ink-primary);
+    stroke-width: 2;
+}
+
+.device-orbit__node text {
+    fill: var(--ink-secondary);
+    font-size: 12px;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: var(--chamber);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+}
+
+.device-orbit__node--selected text {
+    fill: var(--ink-primary);
+    font-weight: var(--weight-semibold);
+}
+
+@keyframes device-orbit-pulse {
+    50% {
+        opacity: 0.45;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .device-orbit__node--new circle {
+        animation: none;
+    }
+}
+
+/* Portalled to <body> and anchored to viewport coordinates of the cursor. Never a
+   pointer target itself — hovering it would fight the node's own pointerleave.
+   Sits above the orbit but below modal dialogs, which own 1000. */
+.devices-view__panel-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink-primary);
+}
+
+.devices-view__panel-head h3 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: var(--type-body);
+    font-weight: var(--weight-semibold);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.devices-view__panel-close {
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    color: var(--ink-tertiary);
+    cursor: pointer;
+    padding: 0.125rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.devices-view__panel-close:hover {
+    color: var(--ink-primary);
+    background: var(--glass);
+}
+
+.devices-view__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.devices-view__badges:empty {
+    display: none;
+}
+
+.devices-view__facts {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-2) var(--space-3);
+    margin: 0;
+    font-size: var(--type-caption);
+}
+
+.devices-view__facts dt {
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+}
+
+.devices-view__facts dd {
+    margin: 0;
+    color: var(--ink-primary);
+    overflow-wrap: anywhere;
+}
+
+.devices-view__connections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    border-top: 1px solid var(--edge-subtle);
+    padding-top: var(--space-3);
+}
+
+.devices-view__connections h4 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--type-caption);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-tertiary);
+}
+
+.devices-view__connections-count {
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: var(--glass);
+    color: var(--ink-secondary);
+}
+
+.devices-view__connections-empty {
+    margin: 0;
+    font-size: var(--type-caption);
+    color: var(--ink-tertiary);
+}
+
+.devices-view__connections ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.devices-view__connections li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--type-caption);
+}
+
+.devices-view__connection-process {
+    color: var(--ink-primary);
+    font-weight: var(--weight-medium);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 8rem;
+}
+
+.devices-view__connection-route {
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+}
+
+.devices-view__mono {
+    font-family: var(--font-mono);
+}
+
+.devices-view__banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--status-danger);
+    border-radius: var(--radius-md);
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+    font-size: var(--type-label);
+}
+
+.devices-view__banner-message {
+    flex: 1;
+    min-width: 0;
+    color: var(--ink-secondary);
+}
+
+.devices-view__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-height: 300px;
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--ink-secondary);
+}
+
+.devices-view__error svg {
+    color: var(--status-danger);
+}
+
+.devices-view__cell-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink-primary);
+    min-width: 0;
+}

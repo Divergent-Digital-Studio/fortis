@@ -1,0 +1,39 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "outDir": "./out/types/node",
+        "lib": [
+            "ES2022"
+        ],
+        "types": [
+            "electron-vite/node",
+            "node"
+        ],
+        "jsx": "preserve",
+        "noEmit": false,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "paths": {
+            "@shared/*": [
+                "src/shared/*"
+            ]
+        }
+    },
+    "include": [
+        "src/main/**/*.ts",
+        "src/preload/**/*.ts",
+        "src/shared/**/*.ts",
+        "electron.vite.config.ts"
+    ],
+    "exclude": [
+        "src/renderer/**/*",
+        "node_modules",
+        "out",
+        "dist"
+    ]
+}

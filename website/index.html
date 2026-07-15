@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fortis — Network Security Monitor</title>
+    <meta name="description" content="Fortis is a privacy-first desktop network security monitor with local AI analysis. Download for macOS, Windows, and Linux." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__inner">
+            <h1 class="hero__title">Fortis</h1>
+            <p class="hero__tagline">A privacy-first network security monitor for your desktop.</p>
+            <p class="hero__subtitle">Real-time connection visibility, local AI analysis, and active defense — no cloud required.</p>
+            <a id="primary-download" class="button button--primary" href="#downloads">Download</a>
+            <p id="primary-download-note" class="hero__note">Choose your platform below.</p>
+            <nav class="hero__nav" aria-label="Page sections">
+                <a href="#pricing">Pricing</a>
+                <a href="#feature-matrix">Features</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section id="downloads" class="downloads">
+            <h2 class="section__title">All downloads</h2>
+            <ul class="downloads__list" id="downloads-list"></ul>
+            <p class="downloads__hint">
+                Installers are published on GitHub Releases. macOS and Windows builds are
+                code-signed when release certificates are configured.
+            </p>
+        </section>
+
+        <section class="why">
+            <h2 class="section__title">Why Fortis</h2>
+            <p class="why__lead">
+                See every connection your machine makes, get plain-language AI risk analysis, and
+                act — all without sending your data to anyone. Offline-first by design.
+            </p>
+            <div class="why__shots">
+                <figure class="why__shot">
+                    <div class="why__shot-placeholder" aria-hidden="true">Dashboard</div>
+                    <figcaption>The 8-card dashboard: live connections, threats, and AI status at a glance.</figcaption>
+                </figure>
+                <figure class="why__shot">
+                    <div class="why__shot-placeholder" aria-hidden="true">Defense</div>
+                    <figcaption>Active defense with manual-confirm kill and firewall block.</figcaption>
+                </figure>
+                <figure class="why__shot">
+                    <div class="why__shot-placeholder" aria-hidden="true">Community</div>
+                    <figcaption>Opt-in, anonymized community threat intelligence — fully transparent.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <h2 class="section__title">Pricing</h2>
+            <p class="pricing__lead">Lifetime deal available now on AppSumo. No subscription.</p>
+            <div class="pricing__grid">__PRICING__</div>
+        </section>
+
+        <section id="feature-matrix" class="matrix">
+            <h2 class="section__title">Feature comparison</h2>
+            <div class="matrix__wrap">__FEATURE_MATRIX__</div>
+        </section>
+
+        <section id="faq" class="faq">
+            <h2 class="section__title">FAQ</h2>
+            <div class="faq__list">__FAQ__</div>
+        </section>
+
+        <section class="notes">
+            <h2 class="section__title">What's new</h2>
+            <div id="release-notes" class="notes__body"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Fortis is offline-first. Connection data and AI analysis stay on your device.</p>
+    </footer>
+
+    <script type="module" src="detect.js"></script>
+    <script type="module" src="site.js"></script>
+</body>
+</html>

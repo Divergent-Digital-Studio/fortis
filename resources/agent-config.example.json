@@ -1,0 +1,7 @@
+{
+    "serverUrl": "ws://DESKTOP_HOST:47600",
+    "token": "REPLACE_WITH_REMOTE_AUTH_TOKEN",
+    "scanIntervalMs": 10000,
+    "rulesPath": null,
+    "logLevel": "info"
+}

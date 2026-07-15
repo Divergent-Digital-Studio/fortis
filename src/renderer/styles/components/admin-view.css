@@ -1,0 +1,55 @@
+.admin-view {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.admin-row-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.admin-form__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+}
+
+/* Text input and Select sit above each other here, so they must agree on
+   width, height and typeface — settings.css sizes inputs for a side-by-side row. */
+.admin-form__row .settings-input,
+.admin-form__row .ds-select {
+    width: 100%;
+    max-width: 320px;
+}
+
+.admin-form__row .settings-input {
+    min-height: 36px;
+    font-family: var(--font-sans);
+}
+
+.admin-form__actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-error {
+    margin: 0;
+    color: var(--status-danger);
+    font-size: var(--type-body);
+}
+
+.admin-session {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--type-body);
+    color: var(--ink-secondary);
+}
