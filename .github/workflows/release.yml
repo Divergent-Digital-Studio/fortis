@@ -48,7 +48,18 @@ jobs:
         run: npm run build
 
       - name: Package and publish
-        run: npx electron-builder --publish onTagOrDraft
+        shell: bash
+        run: |
+          EXTRA=()
+          if [ -z "${APPLE_ID}" ]; then
+            echo "::warning::No Apple credentials — building macOS unsigned, notarization disabled."
+            EXTRA+=(-c.mac.notarize=false)
+          fi
+          if [ -z "${CSC_LINK}" ] && [ -z "${WIN_CSC_LINK}" ]; then
+            echo "::warning::No signing certificates — building unsigned installers."
+            export CSC_IDENTITY_AUTO_DISCOVERY=false
+          fi
+          npx electron-builder --publish onTagOrDraft "${EXTRA[@]}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FORTIS_REPO_OWNER: ${{ vars.FORTIS_REPO_OWNER }}
