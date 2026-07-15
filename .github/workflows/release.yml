@@ -61,7 +61,7 @@ jobs:
             echo "::warning::No signing certificates — building unsigned installers."
             export CSC_IDENTITY_AUTO_DISCOVERY=false
           fi
-          npx electron-builder --publish onTagOrDraft "${EXTRA[@]}"
+          npx electron-builder "${EXTRA[@]}" --publish onTagOrDraft
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FORTIS_REPO_OWNER: ${{ vars.FORTIS_REPO_OWNER }}

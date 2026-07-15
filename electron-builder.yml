@@ -60,6 +60,7 @@ nsis:
 linux:
   icon: resources/icons
   category: Utility
+  maintainer: Divergent Digital Studio <divergent.digital.studio@gmail.com>
   artifactName: ${productName}-${version}.${ext}
   target:
     - target: AppImage
