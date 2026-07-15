@@ -43,15 +43,14 @@ mac:
 win:
   icon: resources/icon.ico
   artifactName: ${productName}-${version}-setup.${ext}
-  publisherName: ${FORTIS_PUBLISHER_NAME}
   target:
     - target: nsis
       arch:
         - x64
-
-signtoolOptions:
-  signingHashAlgorithms: ["sha256"]
-  rfc3161TimeStampServer: http://timestamp.digicert.com
+  signtoolOptions:
+    publisherName: ${FORTIS_PUBLISHER_NAME}
+    signingHashAlgorithms: ["sha256"]
+    rfc3161TimeStampServer: http://timestamp.digicert.com
 
 nsis:
   oneClick: false

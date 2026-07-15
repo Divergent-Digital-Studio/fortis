@@ -53,8 +53,8 @@ function run() {
 
     const winTargets = targetNames(cfg.win && cfg.win.target)
     check('win builds nsis', winTargets.includes('nsis'))
-    check('win declares publisherName (env-driven)', cfg.win && cfg.win.publisherName === '${FORTIS_PUBLISHER_NAME}')
-    check('signtoolOptions declares sha256 + timestamp server', cfg.signtoolOptions && cfg.signtoolOptions.signingHashAlgorithms && cfg.signtoolOptions.signingHashAlgorithms.includes('sha256') && typeof cfg.signtoolOptions.rfc3161TimeStampServer === 'string')
+    check('win declares publisherName (env-driven)', cfg.win && cfg.win.signtoolOptions && cfg.win.signtoolOptions.publisherName === '${FORTIS_PUBLISHER_NAME}')
+    check('signtoolOptions declares sha256 + timestamp server', cfg.win && cfg.win.signtoolOptions && cfg.win.signtoolOptions.signingHashAlgorithms && cfg.win.signtoolOptions.signingHashAlgorithms.includes('sha256') && typeof cfg.win.signtoolOptions.rfc3161TimeStampServer === 'string')
 
     const linuxTargets = targetNames(cfg.linux && cfg.linux.target)
     check('linux builds AppImage', linuxTargets.includes('AppImage'))
