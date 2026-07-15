@@ -1,6 +1,6 @@
 {
     "name": "fortis",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Fortis - Network Security Monitor",
     "main": "./out/main/index.js",
     "scripts": {
