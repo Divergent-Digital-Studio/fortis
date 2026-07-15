@@ -41,7 +41,7 @@ function run() {
 
     check('publish provider is github', cfg.publish && cfg.publish.provider === 'github')
     check('publish repo is fortis', cfg.publish && cfg.publish.repo === 'fortis')
-    check('publish owner is env-driven (no OWNER_PLACEHOLDER)', cfg.publish && cfg.publish.owner === '${FORTIS_REPO_OWNER}')
+    check('publish owner is env-driven (no OWNER_PLACEHOLDER)', cfg.publish && cfg.publish.owner === '${env.FORTIS_REPO_OWNER}')
 
     const macTargets = targetNames(cfg.mac && cfg.mac.target)
     check('mac builds dmg', macTargets.includes('dmg'))
@@ -53,7 +53,7 @@ function run() {
 
     const winTargets = targetNames(cfg.win && cfg.win.target)
     check('win builds nsis', winTargets.includes('nsis'))
-    check('win declares publisherName (env-driven)', cfg.win && cfg.win.signtoolOptions && cfg.win.signtoolOptions.publisherName === '${FORTIS_PUBLISHER_NAME}')
+    check('win declares publisherName (env-driven)', cfg.win && cfg.win.signtoolOptions && cfg.win.signtoolOptions.publisherName === '${env.FORTIS_PUBLISHER_NAME}')
     check('signtoolOptions declares sha256 + timestamp server', cfg.win && cfg.win.signtoolOptions && cfg.win.signtoolOptions.signingHashAlgorithms && cfg.win.signtoolOptions.signingHashAlgorithms.includes('sha256') && typeof cfg.win.signtoolOptions.rfc3161TimeStampServer === 'string')
 
     const linuxTargets = targetNames(cfg.linux && cfg.linux.target)

@@ -22,7 +22,7 @@ extraResources:
 
 publish:
   provider: github
-  owner: ${FORTIS_REPO_OWNER}
+  owner: ${env.FORTIS_REPO_OWNER}
   repo: fortis
 
 mac:
@@ -48,7 +48,7 @@ win:
       arch:
         - x64
   signtoolOptions:
-    publisherName: ${FORTIS_PUBLISHER_NAME}
+    publisherName: ${env.FORTIS_PUBLISHER_NAME}
     signingHashAlgorithms: ["sha256"]
     rfc3161TimeStampServer: http://timestamp.digicert.com
 
