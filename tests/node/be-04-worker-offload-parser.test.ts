@@ -23,6 +23,11 @@ vi.mock('systeminformation', () => ({
     networkConnections: networkConnectionsMock,
 }))
 
+vi.mock('@main/utils/platform', async (importActual) => {
+    const actual = await importActual<typeof import('@main/utils/platform')>()
+    return { ...actual, getPlatform: () => 'darwin' as const }
+})
+
 const LSOF_OK = [
     'COMMAND   PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME',
     'curl     2200  user   5u   IPv4 0xdef        0t0  TCP 10.0.0.3:60000->8.8.8.8:443 (ESTABLISHED)',
